@@ -94,12 +94,14 @@ function App() {
 
   return (
     <div className="App">
-
+    
+    {/*
     <Router>
       <Routes>
           <Route path='/study' element={<Study/>} />
       </Routes>
     </Router>
+    */}
 
       <Navbar bg="light" expand="lg">
       <Container>
