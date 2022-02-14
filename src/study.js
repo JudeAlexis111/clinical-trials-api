@@ -10,6 +10,20 @@ import { MDBCol, MDBIcon } from "mdbreact";
 import $ from 'jquery';
 import { useEffect } from "react";
 
+const containerStyle = {
+    width: '530px',
+    height: '400px'
+  };
+  
+  const options = {
+    disableDefaultUI: true,
+    zoomControl: true
+  };
+
+  const center = {
+    lat: -3.745,
+    lng: -38.523
+  };
 
 function Study(){
 
@@ -34,6 +48,7 @@ function Study(){
 
             document.getElementById('headerImg').src = value.imageUrl;
             document.getElementById('title').innerText = value.name;
+            document.getElementById('description').innerText = value.briefDescription.replace(/(\r\n|\n|\r)/gm, "");
 
             if(value.rating == 1){
                 document.getElementById('star1').className = "fa fa-star checked fa-1x"
@@ -111,6 +126,41 @@ function Study(){
         </div>
     </div>
     </div>
+
+<section>
+  
+  <article>
+    <h1 class="h">Description</h1>
+    <p class="d" id="description"> London is the capital city of England. It is the most populous city in the  United Kingdom, with a metropolitan area of over 13 million inhabitants.</p>
+  </article>
+
+  <div class="map">
+    <LoadScript
+        googleMapsApiKey="AIzaSyBgrtrEe8fveSLFTHYg5hphVlqQ0yqnJcs"
+      >
+          
+        <GoogleMap class="map"
+          mapContainerStyle={containerStyle}
+          center={center}
+          options={options}
+          zoom={15}
+        >
+          {
+              <Marker
+              icon={{
+                fillColor: "yellow",
+                strokeColor: "gold",
+                scale: 7,
+              }}
+              position={center}
+            />
+          }
+          <></>
+        </GoogleMap>
+      </LoadScript>
+
+      </div>
+</section>
 
     </div>
   );
