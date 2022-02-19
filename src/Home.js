@@ -9,28 +9,13 @@ import { MDBCol, MDBIcon } from "mdbreact";
 import $ from 'jquery';
 import { useEffect } from "react";
 
-const containerStyle = {
-    width: '400px',
-    height: '400px'
-  };
-  
-  const options = {
-    disableDefaultUI: true,
-    zoomControl: true
-  };
-
-
 function Home(){
-    const center = {
-        lat: -3.745,
-        lng: -38.523
-      };
     
       console.log("hello")
     
       useEffect(() => {
         const studyList = []
-        $.getJSON('https://api.jsonbin.io/b/620844571b38ee4b33b90eb8/3', function(data) {
+        $.getJSON('https://api.jsonbin.io/b/620844571b38ee4b33b90eb8/5', function(data) {
           // JSON result in `data` variable
           console.log(data.studies);
           data.studies.forEach(populateList);
@@ -78,7 +63,7 @@ function Home(){
           var button = document.createElement("button");
           button.className = "button";
           var btnTxt = document.createElement("a");
-          btnTxt.href = "/study?"+ (value.id -1);
+          btnTxt.href = "/study?"+ (value.id -1)+","+(value.longitude)+","+(value.latitude);
           btnTxt.innerText = "Read More";
 
           button.appendChild(btnTxt);
