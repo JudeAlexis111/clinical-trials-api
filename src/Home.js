@@ -5,6 +5,7 @@ import Nav from 'react-bootstrap/Nav';
 import { GoogleMap, LoadScript, Marker} from '@react-google-maps/api';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import React, { useState } from 'react';
+import Button from 'react-bootstrap/Button';
 import { MDBCol, MDBIcon } from "mdbreact";
 import $ from 'jquery';
 import { useEffect } from "react";
@@ -25,61 +26,85 @@ function Home(){
           console.log(data.studies);
           data.studies.forEach(populateList);
         });
-    
         //console.log(studyList);
-    
-        function populateList(value) {
-          console.log(value);
-    
-          var element = document.createElement("div");
-          element.className = "grid-item";
-    
-          var image = document.createElement('img');
-          image.className = "a";
-          image.src = value.imageUrl;
-          element.append(image);
-        
-          var title = document.createElement('h1');
-          title.className = "c";
-          title.innerText = value.name;
-          element.appendChild(title);
-    
-          var date = document.createElement('h1');
-          date.className = "f";
-          var str = value.startDate + " - " + value.endDate;
-          date.innerHTML = str.italics()
-          element.appendChild(date);
-      
-          var state = document.createElement('h1');
-          state.className = "e";
-          state.innerText = value.locationCity + ", " + value.locationState;
-          element.appendChild(state);
-      
-          var faci = document.createElement('h1');
-          faci.className = "e";
-          faci.innerText = value.locationFacility;
-          element.appendChild(faci);
-    
-          var faci = document.createElement('h1');
-          faci.className = "d";
-          faci.innerText = "Description: " + value.briefDescription.replace(/(\r\n|\n|\r)/gm, "").substring(0,200) + "...";
-          element.appendChild(faci);
-    
-          var button = document.createElement("button");
-          button.className = "button";
-          var btnTxt = document.createElement("a");
-          btnTxt.href = "/study?"+ (value.id -1)+","+(value.longitude)+","+(value.latitude);
-          btnTxt.innerText = "Read More";
-
-          button.appendChild(btnTxt);
-          element.appendChild(button);
-    
-          document.getElementById('lc').appendChild(element);
-          
-        }
     
       }, []);
 
+      function populateList(value) {
+        console.log(value);
+  
+        var element = document.createElement("div");
+        element.className = "grid-item";
+  
+        var image = document.createElement('img');
+        image.className = "a";
+        image.src = value.imageUrl;
+        element.append(image);
+      
+        var title = document.createElement('h1');
+        title.className = "c";
+        title.innerText = value.name;
+        element.appendChild(title);
+  
+        var date = document.createElement('h1');
+        date.className = "f";
+        var str = value.startDate + " - " + value.endDate;
+        date.innerHTML = str.italics()
+        element.appendChild(date);
+    
+        var state = document.createElement('h1');
+        state.className = "e";
+        state.innerText = value.locationCity + ", " + value.locationState;
+        element.appendChild(state);
+    
+        var faci = document.createElement('h1');
+        faci.className = "e";
+        faci.innerText = value.locationFacility;
+        element.appendChild(faci);
+  
+        var faci = document.createElement('h1');
+        faci.className = "d";
+        faci.innerText = "Description: " + value.briefDescription.replace(/(\r\n|\n|\r)/gm, "").substring(0,200) + "...";
+        element.appendChild(faci);
+  
+        var button = document.createElement("button");
+        button.className = "button";
+        var btnTxt = document.createElement("a");
+        btnTxt.href = "/study?"+ (value.id -1)+","+(value.longitude)+","+(value.latitude);
+        btnTxt.innerText = "Read More";
+
+        button.appendChild(btnTxt);
+        element.appendChild(button);
+  
+        document.getElementById('lc').appendChild(element);
+        
+      }
+
+      function clearList(){
+        //Clear and Setup
+        console.log("cleared")
+        document.getElementById('lc').innerHTML = '';
+        document.getElementById('RecentStudies').innerText = "Results for " + "'" + document.getElementById('textOne').value + "'";
+
+        //Heart%20Attack/city/San%20Francisco/state/California
+        //textOne
+        var baseUrl = "http://ec2-44-202-236-245.compute-1.amazonaws.com:8083/v1/clinical-trials/studies/keyword/";
+        var keyWord = document.getElementById('textOne').value.split(' ').join('%20') + "/city/";
+        var cityWord = document.getElementById('textTwo').value.split(' ').join('%20') + "/state/California";
+
+        console.log(baseUrl+keyWord+cityWord);
+        var fullUrl = baseUrl+keyWord+cityWord;
+        
+        
+        $.getJSON(fullUrl, function(data) {
+          // JSON result in `data` variable
+          console.log(data.studies);
+          data.studies.forEach(populateList);
+        });
+        
+      }
+  
+      
     return (
 
         <div>
@@ -128,10 +153,10 @@ function Home(){
     <div class="centered">
 
       
-      <form class = "example"  action="/action_page.php"> 
-        <input type="textOne" name="search" autocomplete="off" placeholder="Find a clinical study..."></input>
-        <input type="textTwo" name="search" autocomplete="off" placeholder="Near Irvine, CA"></input>
-        <button type="submit">Search</button>
+      <form class = "example"> 
+        <input id="textOne" type="textOne" name="search" autocomplete="off" placeholder="Find a clinical study..."></input>
+        <input id="textTwo" type="textTwo" name="search" autocomplete="off" placeholder="Near Irvine, CA"></input>
+        <Button onClick={clearList} >Search</Button>
       </form>
     </div>
     </div>
@@ -162,7 +187,7 @@ function Home(){
 
         */}
     <div class="a">
-      <h1 class="b">Most Recent Studies</h1>
+      <h1 id="RecentStudies" class="b">Most Recent Studies</h1>
     </div>
     
     <div id="lc" class="grid-container">

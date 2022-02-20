@@ -29,10 +29,17 @@ const containerStyle = {
 
 function Study(){
 
+  //handleCloseTwo
+
   const [show, setShow] = useState(false);
+  const [showTwo, setShowTwo] = useState(false);
 
   const handleShow = () => setShow(true);
+  const handleShowTwo = () => setShowTwo(true);
+
   const handleClose = () => setShow(false);
+  const handleCloseTwo = () => setShowTwo(false);
+
   const sendEmail = (() => {
     var x = document.getElementById("snackbar");
   x.className = "show";
@@ -205,10 +212,11 @@ function Study(){
   </div>
 
   <button onClick={handleShow} class="button button2">Intrested? Check Eligibility</button>
+  <button onClick={handleShowTwo} class="button button3">Share Your Experience</button>
 
   <Modal size="lg" show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Email You Physician</Modal.Title>
+          <Modal.Title>Email Your Physician</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <p>To: 
@@ -242,6 +250,40 @@ function Study(){
             Cancel
           </Button>
           <Button variant="primary" onClick={sendEmail}>
+            Send Email
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
+      
+      <Modal size="lg" show={showTwo} onHide={handleCloseTwo}>
+        <Modal.Header closeButton>
+          <Modal.Title>Write Review</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p>Personal Info: 
+            <input type="text" id="fname" name="firstname" placeholder="Enter your Age"></input>
+            ,
+            <input type="text" id="fname" name="firstname" placeholder="Enter your Sex"></input>
+            ,
+            <input type="text" id="fname" name="firstname" placeholder="Enter your Race"></input>
+          </p>
+          
+          <h1 class="i">Rate & Share your experience</h1>
+          
+          <form>
+          <textarea placeholder='Enter your response'>
+          </textarea>
+          </form>
+          
+
+        </Modal.Body>
+        
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleCloseTwo}>
+            Cancel
+          </Button>
+          <Button variant="primary" onClick={handleCloseTwo}>
             Send Email
           </Button>
         </Modal.Footer>

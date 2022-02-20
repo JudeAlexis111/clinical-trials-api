@@ -283,6 +283,16 @@ h1.h {
   font-weight: bold;
 }
 
+h1.i {
+  color: #000000;
+  font-size: 20px;
+  text-align: left;
+  float: left;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
 img.a {
   display: block;
   margin-left: 0px;
@@ -390,6 +400,17 @@ form.example::after {
 .button2:hover {
   border: 2px solid #f44336;
   background-color: #ffffff; /* Green */
+  color: rgb(0, 0, 0);
+}
+
+.button3 {
+  border: 2px solid #555555;
+  background-color: #555555;
+} /* Black */
+
+.button3:hover {
+  border: 2px solid #555555;
+  background-color: #ffffff; /* Black */
   color: rgb(0, 0, 0);
 }
 
