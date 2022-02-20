@@ -9,7 +9,12 @@ import { MDBCol, MDBIcon } from "mdbreact";
 import $ from 'jquery';
 import { useEffect } from "react";
 
+
 function Home(){
+
+  const responseGoogle = (response) => {
+    console.log(response);
+  } 
     
       console.log("hello")
     
@@ -88,7 +93,7 @@ function Home(){
 
       <Navbar bg="light" expand="lg">
       <Container>
-        <Navbar.Brand href="#home">My-Studies</Navbar.Brand>
+        <Navbar.Brand href="#home">Community Clinical Trials</Navbar.Brand>
 
         <Navbar.Brand href="#home">
           <img
@@ -103,17 +108,17 @@ function Home(){
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="study">My Rewards</Nav.Link>
-            <Nav.Link href="#link">My Data</Nav.Link>
-            <Nav.Link href="#link">My Surveys</Nav.Link>
+            <Nav.Link href="study">Share your experience</Nav.Link>
+            <Nav.Link href="#link">My Studies</Nav.Link>
+            <Nav.Link href="#link">Study Sponsor</Nav.Link>
           </Nav>
         </Navbar.Collapse>
 
-        <Navbar.Collapse className="justify-content-end">
-      <Navbar.Text>
+        {/* <Navbar.Collapse className="justify-content-end"> */}
+      {/* <Navbar.Text>
         Signed in as: <a href="#login">Jude Alexis</a>
-      </Navbar.Text>
-    </Navbar.Collapse>
+      </Navbar.Text> */}
+    {/* </Navbar.Collapse> */}
 
       </Container>
     </Navbar>
@@ -121,7 +126,7 @@ function Home(){
     <div className='bg-image'>
     <img class="b" src='/medical.jpeg' width="100%" height="600"/>
     <div class="centered">
-      <h1 class="a">Discover</h1>
+
       
       <form class = "example"  action="/action_page.php"> 
         <input type="textOne" name="search" autocomplete="off" placeholder="Find a clinical study..."></input>
