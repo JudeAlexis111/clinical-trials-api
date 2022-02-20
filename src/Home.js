@@ -9,17 +9,25 @@ import Button from 'react-bootstrap/Button';
 import { MDBCol, MDBIcon } from "mdbreact";
 import $ from 'jquery';
 import { useEffect } from "react";
+import { GoogleLogin } from 'react-google-login';
 
 
 function Home(){
 
   const responseGoogle = (response) => {
-    console.log(response);
+    console.log(response.profileObj.name);
+    document.getElementById('loginButton').innerHTML = '';
+
+    var signedIn = document.createElement('Navbar.Text');
+    signedIn.innerHTML = "Signed in as: <a href='#login'>" + response.profileObj.name +"</a>";
+
+    document.getElementById('loginButton').appendChild(signedIn);
   } 
     
       console.log("hello")
     
       useEffect(() => {
+        
         const studyList = []
         $.getJSON('https://api.jsonbin.io/b/620844571b38ee4b33b90eb8/5', function(data) {
           // JSON result in `data` variable
@@ -139,11 +147,27 @@ function Home(){
           </Nav>
         </Navbar.Collapse>
 
-        {/* <Navbar.Collapse className="justify-content-end"> */}
-      {/* <Navbar.Text>
-        Signed in as: <a href="#login">Jude Alexis</a>
-      </Navbar.Text> */}
-    {/* </Navbar.Collapse> */}
+        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+
+        {/*
+      <div class="google-btn">
+        <div class="google-icon-wrapper">
+          <img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
+        </div>
+        <p class="btn-text"><b>Sign in with Google</b></p>
+      </div>
+        */}
+
+      <div id="loginButton">
+
+        <GoogleLogin
+            clientId="133093290461-fu53t29p3smjtksj1fep5minf9f5enjo.apps.googleusercontent.com"
+            buttonText="Login"
+            onSuccess={responseGoogle}
+            onFailure={responseGoogle}
+            cookiePolicy={'single_host_origin'}
+          />
+      </div>
 
       </Container>
     </Navbar>

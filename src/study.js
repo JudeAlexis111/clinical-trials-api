@@ -23,8 +23,8 @@ const containerStyle = {
   };
 
   const center = {
-    lat: parseFloat(window.location.href.split("?").pop().split(",")[1]),
-    lng: parseFloat(window.location.href.split("?").pop().split(",")[2])
+    lat: parseFloat(window.location.href.split("?").pop().split(",")[2]),
+    lng: parseFloat(window.location.href.split("?").pop().split(",")[1])
   };
 
 function Study(){
@@ -33,6 +33,8 @@ function Study(){
 
   const [show, setShow] = useState(false);
   const [showTwo, setShowTwo] = useState(false);
+
+  const [scrollable, setScrollabe] = useState(true);
 
   const handleShow = () => setShow(true);
   const handleShowTwo = () => setShowTwo(true);
@@ -256,20 +258,95 @@ function Study(){
       </Modal>
 
       
-      <Modal size="lg" show={showTwo} onHide={handleCloseTwo}>
+      <Modal size="lg" scrollable={scrollable} show={showTwo} onHide={handleCloseTwo}>
         <Modal.Header closeButton>
           <Modal.Title>Write Review</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p>Personal Info: 
-            <input type="text" id="fname" name="firstname" placeholder="Enter your Age"></input>
-            ,
-            <input type="text" id="fname" name="firstname" placeholder="Enter your Sex"></input>
-            ,
-            <input type="text" id="fname" name="firstname" placeholder="Enter your Race"></input>
-          </p>
-          
+          <p> Name: 
+            <input type="text" id="fname" name="firstname" placeholder="First Name"></input>
+            <input type="text" id="fname" name="firstname" placeholder="Last Name"></input>
+            &emsp;&emsp;&emsp;&emsp; Sex: 
+            <select class="a" id="country" name="country">
+              <option value="australia">Male</option>
+              <option value="canada">Female</option>
+            </select>
+           </p>
+
+           <p> 
+            Age: 
+            <select class="b" id="country" name="country">
+              <option value="canada">18-28</option>
+              <option value="canada">29-39</option>
+              <option value="canada">40-50</option>
+              <option value="canada">51-61</option>
+              <option value="canada">62-63</option>
+            </select>
+            &emsp;&emsp;&emsp;&emsp;Race: 
+            <input type="text3" id="fname" name="firstname" placeholder="Race"></input>
+
+            <label class="containerGood"> <p class="checkLabel">Keep my personal info. hidden</p>
+            <input type="checkbox" ></input>
+            <span class="checkmark"></span>
+          </label>
+
+           </p>
+          <br></br>
           <h1 class="i">Rate & Share your experience</h1>
+
+          <form class="rating">
+          <label>
+            <input type="radio" name="stars" value="1" />
+            <span class="icon">★</span>
+          </label>
+          <label>
+            <input type="radio" name="stars" value="2" />
+            <span class="icon">★</span>
+            <span class="icon">★</span>
+          </label>
+          <label>
+            <input type="radio" name="stars" value="3" />
+            <span class="icon">★</span>
+            <span class="icon">★</span>
+            <span class="icon">★</span>   
+          </label>
+          <label>
+            <input type="radio" name="stars" value="4" />
+            <span class="icon">★</span>
+            <span class="icon">★</span>
+            <span class="icon">★</span>
+            <span class="icon">★</span>
+          </label>
+          <label>
+            <input type="radio" name="stars" value="5" />
+            <span class="icon">★</span>
+            <span class="icon">★</span>
+            <span class="icon">★</span>
+            <span class="icon">★</span>
+            <span class="icon">★</span>
+          </label>
+        </form>
+
+          <form>
+          <textarea placeholder='Enter your response'>
+          </textarea>
+          </form>
+
+          <h1 class="i">Did the study team explain the risks and benefits?</h1>
+          
+          <form>
+          <textarea placeholder='Enter your response'>
+          </textarea>
+          </form>
+
+          <h1 class="i">Any financial compensation for your time/travel?</h1>
+          
+          <form>
+          <textarea placeholder='Enter your response'>
+          </textarea>
+          </form>
+
+          <h1 class="i">Any advice to the study sponsor?</h1>
           
           <form>
           <textarea placeholder='Enter your response'>
@@ -284,7 +361,7 @@ function Study(){
             Cancel
           </Button>
           <Button variant="primary" onClick={handleCloseTwo}>
-            Send Email
+            Post Review
           </Button>
         </Modal.Footer>
       </Modal>
@@ -301,7 +378,7 @@ function Study(){
           mapContainerStyle={containerStyle}
           center={center}
           options={options}
-          zoom={5}
+          zoom={15}
         >
           {
               <Marker
@@ -321,13 +398,19 @@ function Study(){
 
       <div class="card5">
       <div class="container">
-        <p>8700 Beverly Blvd Los Angeles, CA 90048 <i class="fa fa-map fa-2x"></i></p>
+        <p>Barbra Streisand Women's Heart Center <i class="fa fa-building fa-4x"></i></p>
       </div>
       </div>
 
       <div class="card5">
       <div class="container">
         <p>310-423-9666 <i class="fa fa-phone fa-3x"></i></p>
+      </div>
+      </div>
+
+      <div class="card5">
+      <div class="container">
+        <p>8700 Beverly Blvd Los Angeles, CA 90048 <i class="fa fa-map fa-2x"></i></p>
       </div>
       </div>
 

@@ -18,10 +18,10 @@
     "react-google-login": "^5.2.2",
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.0",
-    "deploy": "aws s3 sync build/ s3://www.clinicaltrials.mobi --acl public-read",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "deploy": "aws s3 sync build/ s3://www.clinicaltrials.mobi --acl public-read",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
