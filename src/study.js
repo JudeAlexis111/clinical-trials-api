@@ -84,10 +84,13 @@ function Study(){
             document.getElementById('age').innerText = value.eligibility.minimumAge;
 
             document.getElementById('gender').innerText = value.eligibility.gender;
-            document.getElementById('intervention').innerText = value.interventions[0].InterventionName;
+            document.getElementById('intervention').innerText = value.interventions[0].InterventionName.charAt(0).toUpperCase() 
+            + value.interventions[0].InterventionName.slice(1);
             document.getElementById('duration').innerText = value.startDate + " - " + value.endDate;
             document.getElementById('title').innerText = value.name;
             document.getElementById('reviews').innerText = value.noOfReviews;
+
+            document.getElementById('dothis').innerText = value.eligibility.eligibilityCriteria;
             document.getElementById('description').innerText = value.briefDescription.replace(/(\r\n|\n|\r)/gm, "");
 
             if(value.rating == 1){
@@ -123,7 +126,7 @@ function Study(){
     <div id="fillMe">
       <Navbar bg="light" expand="lg">
       <Container>
-        <Navbar.Brand href="/">My-Studies</Navbar.Brand>
+        <Navbar.Brand href="/">Community Clinical Trials</Navbar.Brand>
 
         <Navbar.Brand href="/">
           <img
@@ -138,9 +141,7 @@ function Study(){
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="study">My Rewards</Nav.Link>
-            <Nav.Link href="#link">My Data</Nav.Link>
-            <Nav.Link href="#link">My Surveys</Nav.Link>
+            <Nav.Link href="/sponsor">Study Sponsor</Nav.Link>
           </Nav>
         </Navbar.Collapse>
 
@@ -213,6 +214,13 @@ function Study(){
     </div>
   </div>
 
+  <div class="card3">
+    <div class="container">
+      <h4 class="indTitle"><b>Eligibility Criteria</b></h4> 
+      <p id="dothis">Architect Engineer</p> 
+    </div>
+  </div>
+
   <button onClick={handleShow} class="button button2">Intrested? Check Eligibility</button>
   <button onClick={handleShowTwo} class="button button3">Share Your Experience</button>
 
@@ -228,9 +236,11 @@ function Study(){
           </p>
 
           <p>From: 
-            <input type="text" id="fname" name="firstname" placeholder="Your name"></input>
+            <input type="text" id="fname" value={window.location.href.split("?").pop().split(",")[3] 
+            + " " + window.location.href.split("?").pop().split(",")[4]} name="firstname" 
+            placeholder="Your name"></input>
             at
-            <input type="text" id="fname" name="firstname" placeholder="Your email"></input>
+            <input type="text" id="fname" value={window.location.href.split("?").pop().split(",")[5]} name="firstname" placeholder="Your email"></input>
           </p>
 
           <p>Subject: 
@@ -264,8 +274,8 @@ function Study(){
         </Modal.Header>
         <Modal.Body>
           <p> Name: 
-            <input type="text" id="fname" name="firstname" placeholder="First Name"></input>
-            <input type="text" id="fname" name="firstname" placeholder="Last Name"></input>
+            <input type="text" value={window.location.href.split("?").pop().split(",")[3]} id="fname" name="firstname" placeholder="First Name"></input>
+            <input type="text" value={window.location.href.split("?").pop().split(",")[4]} id="fname" name="firstname" placeholder="Last Name"></input>
             &emsp;&emsp;&emsp;&emsp; Sex: 
             <select class="a" id="country" name="country">
               <option value="australia">Male</option>

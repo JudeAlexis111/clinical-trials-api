@@ -13,6 +13,8 @@ import { BrowserRouter as Router, Routes, Route}
     from 'react-router-dom';
 import Study from './study.js'
 import Home from "./Home.js"
+import Sponsor from './sponsor.js';
+import Dashboard from './dashboard';
 
 function App() {
 
@@ -23,6 +25,8 @@ function App() {
     <Routes>
         <Route exact path='/' exact element={<Home />} />
         <Route path='/study' element={<Study/>} />
+        <Route path='/sponsor' element={<Sponsor/>} />
+        <Route path='/dashboard' element={<Dashboard/>} />
     </Routes>
     </Router>
   );
