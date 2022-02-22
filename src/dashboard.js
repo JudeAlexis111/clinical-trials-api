@@ -10,7 +10,9 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import React, { useState } from 'react';
 import { MDBCol, MDBIcon } from "mdbreact";
 import $ from 'jquery';
+import {Component} from 'react';
 import { useEffect } from "react";
+import Chart from './components/Chart'
 
 function Dashboard() {
 
@@ -125,14 +127,19 @@ function Dashboard() {
             </div>  
         </div>
         <div class="tracker-container1">
-            <div class="tracker-item1">1</div>
+            <div class="tracker-item1">
+            
+            </div>
         </div>
         </div>
     </section>
 
   </div>
 </div>
-    
+
+
+<Chart />
+<h1 class="aa">Ethnic Makeup of Interested Participants</h1>
     </div>
     
   );
