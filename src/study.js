@@ -146,9 +146,6 @@ function Study(){
         </Navbar.Collapse>
 
         <Navbar.Collapse className="justify-content-end">
-      <Navbar.Text>
-        Signed in as: <a href="#login">Jude Alexis</a>
-      </Navbar.Text>
     </Navbar.Collapse>
 
       </Container>
@@ -236,11 +233,10 @@ function Study(){
           </p>
 
           <p>From: 
-            <input type="text" id="fname" value={window.location.href.split("?").pop().split(",")[3] 
-            + " " + window.location.href.split("?").pop().split(",")[4]} name="firstname" 
+            <input type="text" id="fname" name="firstname" 
             placeholder="Your name"></input>
             at
-            <input type="text" id="fname" value={window.location.href.split("?").pop().split(",")[5]} name="firstname" placeholder="Your email"></input>
+            <input type="text" id="fname" name="firstname" placeholder="Your email"></input>
           </p>
 
           <p>Subject: 
