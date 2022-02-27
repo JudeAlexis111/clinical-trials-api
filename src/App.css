@@ -1,20 +1,29 @@
 @import url("../node_modules/font-awesome/css/font-awesome.min.css");
 @import url(https://fonts.googleapis.com/css?family=Roboto:500);
 
+div.loadingSpinner {
+  transform: translate(870px, 0px);
+  opacity: 1;
+}
+
 div.chartBody {
   width: 300px;
   height: 300px;
   transform: translate(1450px, -580px);
 }
 
-.tracker-container {
-  display: grid;
-  grid-template-columns: auto auto auto;
+.lightbox {
+  transform: translate(870px, 0px);
   background-color: #ffffff;
   width: 110%;
   height: 100%;
   padding: 10px;
+  opacity: 1;
 }
+.hide-lightbox {
+  opacity: 0;
+}
+
 .tracker-container1 {
   display: grid;
   grid-template-columns: auto auto auto;
@@ -722,6 +731,13 @@ p.intro {
   color: #000000;
 }
 
+h5.title {
+  text-align: center;
+}
+h1.missing {
+  text-align: center;
+  transform: translate(485px, 40px);
+}
 h1.reviewNum {
   font-family: sans-serif;
   transform: translate(270px, -340px);
@@ -1061,7 +1077,7 @@ form.example::after {
   grid-template-columns: auto auto auto;
   background-color: #ffffff;
   padding: 10px;
-  transform: translate(3px, -8px);
+  transform: translate(3px, -76px);
 }
 .grid-item {
   background-color: rgb(255, 255, 255);

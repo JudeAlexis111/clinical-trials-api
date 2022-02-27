@@ -1,12 +1,13 @@
 import './App.css';
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
+import Spinner from 'react-bootstrap/Spinner';
 import Nav from 'react-bootstrap/Nav';
 import { GoogleMap, LoadScript, Marker} from '@react-google-maps/api';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
-import { MDBCol, MDBIcon } from "mdbreact";
+import { MDBCol, MDBIcon, MDBFooter, MDBContainer, MDBRow} from "mdbreact";
 import $ from 'jquery';
 import { useEffect } from "react";
 import { GoogleLogin } from 'react-google-login';
@@ -14,6 +15,7 @@ import { GoogleLogin } from 'react-google-login';
 
 function Home(){
 
+  
   const responseGoogle = (response) => {
     console.log(response);
     document.getElementById('loginButton').innerHTML = '';
@@ -27,6 +29,8 @@ function Home(){
 
     document.getElementById('loginButton').appendChild(signedIn);
   } 
+
+  const [hideLightbox, setHideLightbox] = useState(true);
     
       console.log("hello")
     
@@ -37,6 +41,8 @@ function Home(){
           // JSON result in `data` variable
           console.log(data.studies);
           data.studies.forEach(populateList);
+
+          localStorage.setItem("PickURL", 'https://api.jsonbin.io/b/620844571b38ee4b33b90eb8/5');
         });
         //console.log(studyList);
     
@@ -84,13 +90,16 @@ function Home(){
         var btnTxt = document.createElement("a");
         btnTxt.href = "/study?"+ (value.id -1)+","+(value.longitude)+","+
         (value.latitude)+","+localStorage.getItem("userFirstName")+","+
-        localStorage.getItem("userLastName")+","+localStorage.getItem("userEmail");
+        localStorage.getItem("userLastName")+","+localStorage.getItem("userEmail")
+        +","+localStorage.getItem("PickURL");
         btnTxt.innerText = "Read More";
 
         button.appendChild(btnTxt);
         element.appendChild(button);
   
         document.getElementById('lc').appendChild(element);
+
+        setHideLightbox(true);
         
       }
 
@@ -100,22 +109,40 @@ function Home(){
         document.getElementById('lc').innerHTML = '';
         document.getElementById('RecentStudies').innerText = "Results for " + "'" + document.getElementById('textOne').value + "'";
 
+        setHideLightbox(false);
+
         //Heart%20Attack/city/San%20Francisco/state/California
         //textOne
         //.split(",")
         var baseUrl = "http://ec2-44-202-236-245.compute-1.amazonaws.com:8083/v1/clinical-trials/studies/keyword/";
         var keyWord = document.getElementById('textOne').value.split(' ').join('%20') + "/city/";
-        var cityWord = document.getElementById('textTwo').value.split(",")[0].split(' ').join('%20') + "/state/";
-        var stateWord = document.getElementById('textTwo').value.split(",")[1].split(' ').join('%20');
 
+        var cityWord = "null/state/";
+        var stateWord = "null";
+
+        if(document.getElementById('textTwo').value.includes(",")){
+          cityWord = document.getElementById('textTwo').value.split(",")[0].split(' ').join('%20') + "/state/";
+          stateWord = document.getElementById('textTwo').value.split(",")[1].split(' ').join('%20');
+        }
+        
         console.log(baseUrl+keyWord+cityWord+stateWord);
         var fullUrl = baseUrl+keyWord+cityWord+stateWord;
+        localStorage.setItem("PickURL", fullUrl);
         
         
         $.getJSON(fullUrl, function(data) {
           // JSON result in `data` variable
-          console.log(data.studies);
-          data.studies.forEach(populateList);
+          console.log(data.studies.length);
+
+          if(data.studies.length > 0){
+            data.studies.forEach(populateList);
+          } else{
+            var noResult = document.createElement('h1');
+            noResult.className = "missing";
+            noResult.innerText = "No Results Found";
+            document.getElementById('lc').appendChild(noResult);
+          }
+
         });
         
       }
@@ -219,9 +246,32 @@ function Home(){
     <div class="a">
       <h1 id="RecentStudies" class="b">Most Recent Studies</h1>
     </div>
+
+    <div className={`lightbox ${hideLightbox ? "hide-lightbox" : ""}`}>
+      <Spinner animation="border" variant="primary" size="lg"role="status">
+        <span className="visually-hidden">Loading...</span>
+      </Spinner>
+    </div>
     
     <div id="lc" class="grid-container">
     </div>
+
+    <MDBFooter bgColor="blue" className="font-small pt-4 mt-4">
+      <div className="footerBody">
+            <h5 className="title">Terms of Service</h5>
+            <p className="tos">
+              Here you can use rows and columns here to organize your footer
+              content.
+            </p>
+      <div className="footer-copyright">
+        <MDBContainer fluid>
+          &copy; {new Date().getFullYear()} Copyright: <a href="http://www.clinicaltrials.mobi"> ClinicalTrials.mobi </a>
+        </MDBContainer>
+      </div>
+      </div>
+
+    </MDBFooter>
+
         </div>
 
     );

@@ -53,15 +53,17 @@ function Study(){
         // Update the document title using the browser API
         var url = window.location.href;
         var str = "";
+        var studyUrl = "";
         var block;
 
         console.log(center);
 
         url = url.split("?").pop();
         str = url.split(",")[0];
-        console.log(url.split(",")[1]);
+        studyUrl = url.split(",")[6];
+        console.log(url.split(",")[6]);
 
-        $.getJSON('https://api.jsonbin.io/b/620844571b38ee4b33b90eb8/5', function(data) {
+        $.getJSON(studyUrl, function(data) {
             // JSON result in `data` variable
             console.log(data.studies[parseInt(str)]);
             populatePage(data.studies[parseInt(str)]);
