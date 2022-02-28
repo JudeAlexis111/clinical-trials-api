@@ -129,7 +129,8 @@ function Sponsor() {
           <Button variant="secondary" onClick={handleClose}>
             Cancel
           </Button>
-          <Button variant="primary" href="/dashboard">
+          {/*Change href="#" to href="/dashboard" to link up dashboard */}
+          <Button variant="primary" href="#">
             Sign In
           </Button>
         </Modal.Footer>
