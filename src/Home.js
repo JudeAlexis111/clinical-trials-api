@@ -258,10 +258,9 @@ function Home(){
 
     <MDBFooter bgColor="blue" className="font-small pt-4 mt-4">
       <div className="footerBody">
-            <h5 className="title">Terms of Service</h5>
+            <h5 className="title"> <a>Terms of Service</a> &nbsp;&nbsp; About Us</h5>
             <p className="tos">
-              Here you can use rows and columns here to organize your footer
-              content.
+              
             </p>
       <div className="footer-copyright">
         <MDBContainer fluid>
