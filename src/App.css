@@ -1,6 +1,69 @@
 @import url("../node_modules/font-awesome/css/font-awesome.min.css");
 @import url(https://fonts.googleapis.com/css?family=Roboto:500);
 
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+.columnSR4 {
+  float: left;
+  width: 33.3%;
+  margin-bottom: 16px;
+  padding: 0 8px;
+}
+
+.card15L {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: 8px;
+}
+
+.about-section {
+  padding: 50px;
+  text-align: center;
+  background-color: #474e5d;
+  color: white;
+}
+
+.container {
+  padding: 0 16px;
+}
+
+.container::after,
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.title {
+  color: grey;
+}
+
+.button57 {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+}
+
+.button57:hover {
+  background-color: #555;
+}
+
+@media screen and (max-width: 650px) {
+  .columnSR4 {
+    width: 100%;
+    display: block;
+  }
+}
+
 div.loadingSpinner {
   transform: translate(870px, 0px);
   opacity: 1;
@@ -210,6 +273,13 @@ body.sForm {
   background-color: rgb(255, 255, 255);
   width: 40%;
   transform: translate(70%, 0%);
+}
+
+body.centered {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transform: translate(-50%, -15%);
 }
 
 * {
@@ -997,6 +1067,14 @@ h1.aa {
   text-align: left;
   font-weight: normal;
   transform: translate(1300px, -715px);
+}
+h1.ab {
+  color: #000000;
+  font-size: 50px;
+  font-family: sans-serif;
+  text-align: left;
+  font-weight: bold;
+  transform: translate(31%, -350px);
 }
 
 .space {

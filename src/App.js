@@ -15,6 +15,7 @@ import Study from './study.js'
 import Home from "./Home.js"
 import Sponsor from './sponsor.js';
 import Dashboard from './dashboard';
+import About from './About';
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
         <Route path='/study' element={<Study/>} />
         <Route path='/sponsor' element={<Sponsor/>} />
         <Route path='/dashboard' element={<Dashboard/>} />
+        <Route path='/about' element={<About/>} />
     </Routes>
     </Router>
   );

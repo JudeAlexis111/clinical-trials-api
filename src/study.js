@@ -185,7 +185,7 @@ function Study(){
     <div class="card2">
       <p><i class="fa fa-child fa-1x"></i></p>
       <h3>Min. Age</h3>
-      <p id="age">Projects</p>
+      <p id="age"></p>
     </div>
   </div>
   
@@ -193,7 +193,7 @@ function Study(){
     <div class="card2">
       <p><i class="fa fa-venus-mars fa-1x"></i></p>
       <h3>Gender</h3>
-      <p id="gender">Happy Clients</p>
+      <p id="gender"></p>
     </div>
   </div>
   
@@ -201,7 +201,7 @@ function Study(){
     <div class="card2">
       <p><i class="fa fa-file fa-1x"></i></p>
       <h3>Intervention</h3>
-      <p id="intervention">Meetings</p>
+      <p id="intervention"></p>
     </div>
   </div>
 </div>
@@ -209,14 +209,14 @@ function Study(){
   <div class="card3">
     <div class="container">
       <h4 class="indTitle"><b>Description</b></h4> 
-      <p id="description">Architect Engineer</p> 
+      <p id="description"></p> 
     </div>
   </div>
 
   <div class="card3">
     <div class="container">
       <h4 class="indTitle"><b>Eligibility Criteria</b></h4> 
-      <p id="dothis">Architect Engineer</p> 
+      <p id="dothis"></p> 
     </div>
   </div>
 
