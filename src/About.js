@@ -67,27 +67,8 @@ function About() {
     With passion and courage, we come together to get the job done.
     </p>
 
-    <h2>About Glassdoor</h2>
-    <p>
-    Glassdoor is the worldwide leader on insights about jobs and companies.
-    <br></br>
-    <br></br>
-    Built on the foundation of increasing workplace transparency, Glassdoor offers 
-    insights into the employee experience powered by millions of company ratings and 
-    reviews, CEO approval ratings, salary reports, interview reviews and questions, 
-    benefits reviews, office photos and more, combined with the latest jobs. Unlike 
-    other career sites, all of this information is shared by those who know a company 
-    best — the employees. In turn, job seekers on Glassdoor are well-researched and 
-    more informed about the jobs and companies they apply to and consider joining. 
-    This is why thousands of employers across all industries and sizes turn to Glassdoor 
-    to help them recruit and hire quality candidates at scale who stay longer. Glassdoor 
-    is available anywhere via its mobile apps.
-    <br></br>
-    <br></br>
-    Glassdoor operates as a part of Recruit Holdings’ growing HR Technology business segment. 
-    Glassdoor is headquartered in San Francisco, California and was founded by Robert Hohman, 
-    Rich Barton and Tim Besse in 2007, before its launch in 2008.
-    </p>
+    <h2>About Clinicaltrials.mobi</h2>
+    
     </body>
 
     </div>
