@@ -129,6 +129,7 @@ function Home(){
           console.log(stateWord);
 
           var i;
+          stateWord = stateWord.toUpperCase();
           for (i = 0; i < states.length; i++) {
               if (states[i][1] == stateWord) {
                   stateWord = (states[i][0]);
