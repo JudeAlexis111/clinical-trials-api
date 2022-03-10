@@ -89,7 +89,7 @@ function Study(){
             //document.getElementById('intervention').innerText = value.locationZip;
 
             try{
-              document.getElementById('intervention').innerText = value.interventions[0].InterventionName.charAt(0).toUpperCase() 
+              document.getElementById('intervention').innerText = value.interventions[0].InterventionDescription.charAt(0).toUpperCase() 
               + value.interventions[0].InterventionName.slice(1);;
             } catch{
               document.getElementById('intervention').innerText = "Not Available";
