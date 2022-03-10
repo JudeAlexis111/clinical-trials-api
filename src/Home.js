@@ -120,9 +120,22 @@ function Home(){
         var cityWord = "null/state/";
         var stateWord = "null";
 
+        var states = [ ['Alabama', 'AL'], ['Alaska', 'AK'], ['American Samoa', 'AS'], ['Arizona', 'AZ'], ['Arkansas', 'AR'], ['Armed Forces Americas', 'AA'], ['Armed Forces Europe', 'AE'], ['Armed Forces Pacific', 'AP'], ['California', 'CA'], ['Colorado', 'CO'], ['Connecticut', 'CT'], ['Delaware', 'DE'], ['District Of Columbia', 'DC'], ['Florida', 'FL'], ['Georgia', 'GA'], ['Guam', 'GU'], ['Hawaii', 'HI'], ['Idaho', 'ID'], ['Illinois', 'IL'], ['Indiana', 'IN'], ['Iowa', 'IA'], ['Kansas', 'KS'], ['Kentucky', 'KY'], ['Louisiana', 'LA'], ['Maine', 'ME'], ['Marshall Islands', 'MH'], ['Maryland', 'MD'], ['Massachusetts', 'MA'], ['Michigan', 'MI'], ['Minnesota', 'MN'], ['Mississippi', 'MS'], ['Missouri', 'MO'], ['Montana', 'MT'], ['Nebraska', 'NE'], ['Nevada', 'NV'], ['New Hampshire', 'NH'], ['New Jersey', 'NJ'], ['New Mexico', 'NM'], ['New York', 'NY'], ['North Carolina', 'NC'], ['North Dakota', 'ND'], ['Northern Mariana Islands', 'NP'], ['Ohio', 'OH'], ['Oklahoma', 'OK'], ['Oregon', 'OR'], ['Pennsylvania', 'PA'], ['Puerto Rico', 'PR'], ['Rhode Island', 'RI'], ['South Carolina', 'SC'], ['South Dakota', 'SD'], ['Tennessee', 'TN'], ['Texas', 'TX'], ['US Virgin Islands', 'VI'], ['Utah', 'UT'], ['Vermont', 'VT'], ['Virginia', 'VA'], ['Washington', 'WA'], ['West Virginia', 'WV'], ['Wisconsin', 'WI'], ['Wyoming', 'WY'], ];
+
         if(document.getElementById('textTwo').value.includes(",")){
           cityWord = document.getElementById('textTwo').value.split(",")[0].split(' ').join('%20') + "/state/";
-          stateWord = document.getElementById('textTwo').value.split(",")[1].split(' ').join('%20');
+          stateWord = document.getElementById('textTwo').value.split(",")[1].replace(/\s/g, '');
+
+          console.log(stateWord);
+
+          var i;
+          for (i = 0; i < states.length; i++) {
+              if (states[i][1] == stateWord) {
+                  stateWord = (states[i][0]);
+                  console.log(stateWord);
+              }
+          }
+
         }
         
         console.log(baseUrl+keyWord+cityWord+stateWord);
