@@ -89,8 +89,16 @@ function Study(){
             //document.getElementById('intervention').innerText = value.locationZip;
 
             try{
-              document.getElementById('intervention').innerText = value.interventions[0].InterventionDescription.charAt(0).toUpperCase() 
-              + value.interventions[0].InterventionName.slice(1);;
+              var baseStr = "";
+              
+              if(/\d/.test((value.interventions[0].InterventionName))){
+                baseStr = value.interventions[0].InterventionDescription;
+              } else{
+                baseStr = value.interventions[0].InterventionName;
+              }
+
+              document.getElementById('intervention').innerText = baseStr.charAt(0).toUpperCase() 
+              + baseStr.slice(1);
             } catch{
               document.getElementById('intervention').innerText = "Not Available";
             }
