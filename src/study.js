@@ -179,7 +179,7 @@ function Study(){
     <div class="card2">
       <p><i class="fa fa-calendar fa-1x"></i></p>
       <h3>Duration</h3>
-      <p id="duration">Partners</p>
+      <p id="duration"></p>
     </div>
   </div>
 
