@@ -77,7 +77,7 @@ function Study(){
             var map = document.getElementById('map');
             //map.innerHTML = map.innerHTML.replace(/-3.745,-38.523/g,'29.97,31.13');
 
-            console.log(value.locationZip);
+            //console.log(value);
             localStorage.setItem("studyName", value.name);
             localStorage.setItem("criteria", value.eligibility.eligibilityCriteria);
             localStorage.setItem("url", value.detailedStudyInfoUrl);
@@ -86,7 +86,14 @@ function Study(){
             document.getElementById('age').innerText = value.eligibility.minimumAge;
 
             document.getElementById('gender').innerText = value.eligibility.gender;
-            document.getElementById('intervention').innerText = value.locationZip;
+            //document.getElementById('intervention').innerText = value.locationZip;
+
+            try{
+              document.getElementById('intervention').innerText = value.interventions[0].InterventionName.charAt(0).toUpperCase() 
+              + value.interventions[0].InterventionName.slice(1);;
+            } catch{
+              document.getElementById('intervention').innerText = "Not Available";
+            }
             //value.interventions[0].InterventionName.charAt(0).toUpperCase() 
             //+ value.interventions[0].InterventionName.slice(1);
 
