@@ -77,7 +77,7 @@ function Study(){
             var map = document.getElementById('map');
             //map.innerHTML = map.innerHTML.replace(/-3.745,-38.523/g,'29.97,31.13');
 
-            console.log(value.eligibility.minimumAge);
+            console.log(value.locationZip);
             localStorage.setItem("studyName", value.name);
             localStorage.setItem("criteria", value.eligibility.eligibilityCriteria);
             localStorage.setItem("url", value.detailedStudyInfoUrl);
@@ -86,8 +86,10 @@ function Study(){
             document.getElementById('age').innerText = value.eligibility.minimumAge;
 
             document.getElementById('gender').innerText = value.eligibility.gender;
-            document.getElementById('intervention').innerText = value.interventions[0].InterventionName.charAt(0).toUpperCase() 
-            + value.interventions[0].InterventionName.slice(1);
+            document.getElementById('intervention').innerText = value.locationZip;
+            //value.interventions[0].InterventionName.charAt(0).toUpperCase() 
+            //+ value.interventions[0].InterventionName.slice(1);
+
             document.getElementById('duration').innerText = value.startDate + " - " + value.endDate;
             document.getElementById('title').innerText = value.name;
             document.getElementById('reviews').innerText = value.noOfReviews;
