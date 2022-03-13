@@ -13,6 +13,7 @@ import $ from 'jquery';
 import {Component} from 'react';
 import { useEffect } from "react";
 import Chart from './components/Chart'
+import { Helmet } from 'react-helmet';
 
 function Dashboard() {
 
@@ -21,6 +22,9 @@ function Dashboard() {
 
   return (
       <div>
+                    <Helmet>
+              <title>Clinical Trials</title>
+            </Helmet>
           <Navbar bg="light" expand="lg">
       <Container>
         <Navbar.Brand href="/">Community Clinical Trials</Navbar.Brand>

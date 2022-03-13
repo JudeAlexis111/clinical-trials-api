@@ -10,6 +10,7 @@ import React, { useState } from 'react';
 import { MDBCol, MDBIcon } from "mdbreact";
 import $ from 'jquery';
 import { useEffect } from "react";
+import { Helmet } from 'react-helmet';
 
 function Sponsor() {
 
@@ -17,7 +18,9 @@ function Sponsor() {
     const handleClose = () => setShow(false);
 
   return (
-      <div>
+      <div>            <Helmet>
+      <title>Clinical Trials</title>
+    </Helmet>
           <Navbar bg="light" expand="lg">
       <Container>
         <Navbar.Brand href="/">Community Clinical Trials</Navbar.Brand>

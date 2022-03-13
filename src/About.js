@@ -8,6 +8,7 @@ import React, { useState } from 'react';
 import { MDBCol, MDBIcon } from "mdbreact";
 import $ from 'jquery';
 import { useEffect } from "react";
+import { Helmet } from 'react-helmet';
 
 function About() {
 
@@ -15,6 +16,9 @@ function About() {
 
   return (
     <div>
+                  <Helmet>
+              <title>Clinical Trials</title>
+            </Helmet>
         <Navbar bg="light" expand="lg">
       <Container>
         <Navbar.Brand href="/">Community Clinical Trials</Navbar.Brand>

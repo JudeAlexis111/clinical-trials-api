@@ -1216,6 +1216,18 @@ form.example::after {
   vertical-align: top;
 }
 
+p.expand {
+  transition-duration: 0.4s;
+}
+
+.hidden {
+  border: 3x solid #ffffff;
+  width: 270px;
+  height: 180px;
+  transform: translate(870px, -460px);
+  opacity: 0;
+}
+
 nav ul {
   list-style-type: none;
   padding: 0;

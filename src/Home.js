@@ -11,6 +11,7 @@ import { MDBCol, MDBIcon, MDBFooter, MDBContainer, MDBRow} from "mdbreact";
 import $ from 'jquery';
 import { useEffect } from "react";
 import { GoogleLogin } from 'react-google-login';
+import { Helmet } from 'react-helmet';
 
 
 function Home(){
@@ -164,7 +165,13 @@ function Home(){
       
     return (
 
+      
+
         <div>
+            <Helmet>
+              <title>Clinical Trials</title>
+            </Helmet>
+
             {/*
     <Router>
       <Routes>

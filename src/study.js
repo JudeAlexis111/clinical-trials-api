@@ -11,6 +11,7 @@ import React, { useState } from 'react';
 import { MDBCol, MDBIcon } from "mdbreact";
 import $ from 'jquery';
 import { useEffect } from "react";
+import { Helmet } from 'react-helmet';
 
 const containerStyle = {
     width: '530px',
@@ -47,6 +48,13 @@ function Study(){
   x.className = "show";
   setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
     setShow(false);
+  });
+
+  const fullTxt = (() => {
+    document.getElementById('intervention').innerText = localStorage.getItem("baseStr");
+  });
+  const shrunkTxt = (() => {
+    document.getElementById('intervention').innerText = localStorage.getItem("trimStr");
   });
 
     useEffect(() => {
@@ -97,7 +105,13 @@ function Study(){
               //   baseStr = value.interventions[0].InterventionName;
               // }
               baseStr = value.interventions[0].InterventionType+", "+value.interventions[0].InterventionDescription
-              document.getElementById('intervention').innerText = baseStr;
+              var trimmedString = baseStr.substring(0,30) + "...";
+
+              localStorage.setItem("baseStr", baseStr);
+              localStorage.setItem("trimStr", trimmedString);
+
+              document.getElementById('intervention').innerText = trimmedString;
+
               //document.getElementById('intervention').innerText = baseStr.charAt(0).toUpperCase();
               // + baseStr.slice(1);
             } catch{
@@ -144,6 +158,9 @@ function Study(){
 
   return (
     <div id="fillMe">
+                  <Helmet>
+              <title>Clinical Trials</title>
+            </Helmet>
       <Navbar bg="light" expand="lg">
       <Container>
         <Navbar.Brand href="/">Community Clinical Trials</Navbar.Brand>
@@ -214,15 +231,20 @@ function Study(){
       <p id="gender"></p>
     </div>
   </div>
+
   
-  <div class="column">
+  <div id="cardInt" class="column">
+    
     <div class="card2">
       <p><i class="fa fa-file fa-1x"></i></p>
       <h3>Intervention</h3>
-      <p id="intervention"></p>
+        <p class="expand" id="intervention">
+        </p>
     </div>
+    
   </div>
 </div>
+
 
   <div class="card3">
     <div class="container">
@@ -439,6 +461,8 @@ function Study(){
         <p>8700 Beverly Blvd Los Angeles, CA 90048 <i class="fa fa-map fa-2x"></i></p>
       </div>
       </div>
+      
+      <button class="hidden" onMouseOver={fullTxt} onMouseOut={shrunkTxt}></button>
 
 </section>
 
