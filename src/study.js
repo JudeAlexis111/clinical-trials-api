@@ -115,6 +115,10 @@ function Study(){
               //document.getElementById('intervention').innerText = baseStr.charAt(0).toUpperCase();
               // + baseStr.slice(1);
             } catch{
+
+              localStorage.setItem("baseStr", "Not Available");
+              localStorage.setItem("trimStr", "Not Available");
+
               document.getElementById('intervention').innerText = "Not Available";
             }
             //value.interventions[0].InterventionName.charAt(0).toUpperCase() 
