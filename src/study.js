@@ -88,17 +88,18 @@ function Study(){
             document.getElementById('gender').innerText = value.eligibility.gender;
             //document.getElementById('intervention').innerText = value.locationZip;
 
-            try{
+           try{
               var baseStr = "";
               
-              if(/\d/.test((value.interventions[0].InterventionName))){
-                baseStr = value.interventions[0].InterventionDescription;
-              } else{
-                baseStr = value.interventions[0].InterventionName;
-              }
-
-              document.getElementById('intervention').innerText = baseStr.charAt(0).toUpperCase() 
-              + baseStr.slice(1);
+              // if(/\d/.test((value.interventions[0].InterventionName))){
+              //   baseStr = value.interventions[0].InterventionDescription;
+              // } else{
+              //   baseStr = value.interventions[0].InterventionName;
+              // }
+              baseStr = value.interventions[0].InterventionType+", "+value.interventions[0].InterventionDescription
+              document.getElementById('intervention').innerText = baseStr;
+              //document.getElementById('intervention').innerText = baseStr.charAt(0).toUpperCase();
+              // + baseStr.slice(1);
             } catch{
               document.getElementById('intervention').innerText = "Not Available";
             }
@@ -237,7 +238,7 @@ function Study(){
     </div>
   </div>
 
-  <button onClick={handleShow} class="button button2">Intrested? Check Eligibility</button>
+  <button onClick={handleShow} class="button button2">Interested? Check Eligibility</button>
   <button onClick={handleShowTwo} class="button button3">Share Your Experience</button>
 
   <Modal size="lg" show={show} onHide={handleClose}>
